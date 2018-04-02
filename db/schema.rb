@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20180402024106) do
 
   create_table "businesses", force: :cascade do |t|
-    t.string "business_name"
+    t.string "name"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

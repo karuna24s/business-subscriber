@@ -1,4 +1,4 @@
 class BusinessSerializer < ActiveModel::Serializer
-  attributes :id, :business_name, :status
+  attributes :id, :name, :status
   has_many :subscribers
 end

@@ -1,6 +1,9 @@
 class BusinessesController < ApplicationController
+  require 'net/http'
+  before_action :get_json_businesses
+
   def index
-    @businesses = 'https://young-temple-44207.herokuapp.com/businesses?token=617604678'
+    @businesses = Business.all
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @businesses }
@@ -38,8 +41,15 @@ class BusinessesController < ApplicationController
 
   private
 
+  def get_json_businesses
+    source = 'https://young-temple-44207.herokuapp.com/businesses?token=617604678'
+    resp = Net::HTTP.get_response(URI.parse(source))
+    data = resp.body
+    result = JSON.parse(data)
+  end
+
   def business_params
-    params.require(:business).permit(:business_name, :status)
+    params.require(:business).permit(:name, :status)
   end
 
 end
