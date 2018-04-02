@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   def index
-    @businesses = Business.all
+    @businesses = 'https://young-temple-44207.herokuapp.com/businesses?token=617604678'
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @businesses }
